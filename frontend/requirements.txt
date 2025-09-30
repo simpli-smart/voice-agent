@@ -1,0 +1,2 @@
+setuptools~=72.2.0
+fastapi[all]

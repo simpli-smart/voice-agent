@@ -1,0 +1,4 @@
+onnxruntime
+aiortc
+transformers
+opencv-python
