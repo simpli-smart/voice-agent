@@ -13,11 +13,11 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({
   return (
     <div className="w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 p-4">
       <div className="flex items-center justify-center gap-6">
-        <UserAudioControl size="lg" />
+        <UserAudioControl size="md" classNames={{ button: 'w-50'}} />
 
         {/* Start/Stop Button */}
         <ConnectButton
-          size="lg"
+          size="md"
           onConnect={onConnect}
           onDisconnect={onDisconnect}
         />
