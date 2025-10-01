@@ -42,7 +42,7 @@ load_dotenv(override=True)
 STT_BASE_URL = os.getenv("STT_BASE_URL", "https://http.whisper-large-v3-turbo.yotta-infrastructure.on-prem.clusters.s9t.link")
 TTS_BASE_URL = os.getenv("TTS_BASE_URL", "https://http.kokoro-tts-simplismart.yotta-infrastructure.on-prem.clusters.s9t.link/v1") 
 LLM_BASE_URL = os.getenv("LLM_BASE_URL", "https://http.gemma-3-1b-simplismart-proxy.yotta-infrastructure.on-prem.clusters.s9t.link")
-API_KEY = os.getenv("API_KEY", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiNTgyYTUxNzYtYjliYi00NzA3LWEwM2QtMjM3OWFjZGRjNTg5IiwiZXhwIjoxNzU5ODIxODI4LCJvcmdfdXVpZCI6IjQ0NGI3ODYxLWIxZGYtNDE4Ni05NzdiLTdjNDMxZjNiMDIwOCJ9.Tdk9quBllTAP4clfTmEe4P4x3K_7-5GLsZJ-QBHRF5Q")
+API_KEY = os.getenv("API_KEY", "<add-your-key>")
 
 # Store connections by pc_id
 pcs_map: Dict[str, SmallWebRTCConnection] = {}
