@@ -96,7 +96,7 @@ export const ConversationView: React.FC = memo(() => {
                     className={cn(
                       "p-4 shadow-sm",
                       message.role === 'user' 
-                        ? 'bg-primary text-primary-foreground' 
+                        ? 'bg-primary text-active-foreground' 
                         : 'bg-background border'
                     )}
                   >
