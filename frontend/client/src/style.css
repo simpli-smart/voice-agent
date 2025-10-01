@@ -1,0 +1,16 @@
+@import "@pipecat-ai/voice-ui-kit/styles";
+@import "tailwindcss";
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+:root {
+  --color-primary: #2056ed;
+  --color-active: #2056ed;
+  --color-ring: #2056ed;
+  --color-active-ring: rgba(32, 86, 237, 0.2);
+  --color-active-accent: rgba(32, 86, 237, 0.1);
+}
