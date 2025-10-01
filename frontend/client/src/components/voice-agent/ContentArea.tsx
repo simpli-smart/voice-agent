@@ -15,11 +15,11 @@ export const ContentArea: React.FC<ContentAreaProps> = memo(({ currentView }) =>
           {/* Main Content Area */}
           <div className="w-full h-full">
             {currentView === 'visualizer' ? (
-              <div className="w-full h-[55vh] rounded-lg overflow-hidden relative">
+              <div className="w-full h-[60vh] rounded-lg overflow-hidden relative">
                 <Plasma />
               </div>
             ) : (
-              <div className="w-full h-[55vh]">
+              <div className="w-full h-[60vh]">
                 <ConversationProvider> 
                   <ConversationView />
                 </ConversationProvider>
