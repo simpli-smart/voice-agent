@@ -19,9 +19,38 @@ export const ConversationView: React.FC = memo(() => {
 
   // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
-    console.log('messages', messages);
     endRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
+
+  // Helper function to get clean message text from parts
+  const getMessageText = (message: any) => {
+    if (!message.parts || message.parts.length === 0) {
+      return message.text || '';
+    }
+    
+    // Get all text from parts
+    const allText = message.parts
+      .map((p: any) => p.text)
+      .filter(Boolean)
+      .join(' ');
+    
+    // Clean up repeated words and patterns
+    const cleanedText = allText
+      // Remove repeated words with no space (like "BBlala" -> "Bla")
+      .replace(/\b(\w+)\1+\b/g, '$1')
+      // Remove repeated words with space (like "How How" -> "How")
+      .replace(/\b(\w+)\s+\1\b/g, '$1')
+      // Remove repeated punctuation patterns (like "!!" -> "!")
+      .replace(/([!?.])\1+/g, '$1')
+      // Note: Emoji deduplication removed due to regex complexity
+      // Remove repeated commas (like ",," -> ",")
+      .replace(/,+/g, ',')
+      // Replace multiple spaces with single space
+      .replace(/\s+/g, ' ')
+      .trim();
+    
+    return cleanedText || message.text || '';
+  };
 
   return (
     <ScrollArea className="h-full p-6">
@@ -47,7 +76,7 @@ export const ConversationView: React.FC = memo(() => {
               )}>
                 {message.role === 'assistant' && (
                   <Avatar className="h-8 w-8 shrink-0">
-                    <AvatarFallback className= "text-xs font-medium bg-muted text-muted-foreground">
+                    <AvatarFallback className="text-xs font-medium bg-muted text-muted-foreground">
                       <Bot className="w-4 h-4" />
                     </AvatarFallback>
                   </Avatar>
@@ -63,15 +92,16 @@ export const ConversationView: React.FC = memo(() => {
                     </span>
                   </div>
                   <Card 
-                  rounded="xl"
-                  className={cn(
-                    "p-4 shadow-sm",
-                    message.role === 'user' 
-                      ? 'bg-primary text-active-foreground' 
-                      : 'bg-background border'
-                  )}>
+                    rounded="xl"
+                    className={cn(
+                      "p-4 shadow-sm",
+                      message.role === 'user' 
+                        ? 'bg-primary text-primary-foreground' 
+                        : 'bg-background border'
+                    )}
+                  >
                     <div className="text-sm leading-relaxed prose prose-sm max-w-none">
-                      <ReactMarkdown>{message.content}</ReactMarkdown>
+                      <ReactMarkdown>{getMessageText(message)}</ReactMarkdown>
                     </div>
                   </Card>
                 </div>
