@@ -9,7 +9,7 @@ interface ContentAreaProps {
 
 export const ContentArea: React.FC<ContentAreaProps> = memo(({ currentView }) => {
   return (
-    <div className="flex-1 flex items-center justify-center p-6 max-h-[70vh]">
+    <div className="flex-1 flex items-center justify-center px-6 max-h-[70vh]">
       <Card className="w-full max-w-6xl h-full">
         <CardContent className="p-6 h-full">
           {/* Main Content Area */}

@@ -3,6 +3,7 @@ import { PipecatAppBase } from "@pipecat-ai/voice-ui-kit";
 import { Toolbar } from './Toolbar';
 import { ContentArea } from './ContentArea';
 import { ControlPanel } from './ControlPanel';
+import { ViewControls } from './ViewControls';
 import { MetricsProvider } from './MetricsContext';
 
 // Separate component to handle client initialization and view state
@@ -35,6 +36,12 @@ const VoiceAgentContent: React.FC<{
         </div>
       )}
 
+      {/* View Controls */}
+      <ViewControls
+        currentView={currentView}
+        onViewChange={handleViewChange}
+      />
+
       {/* Content Area */}
       <ContentArea currentView={currentView} />
 
@@ -42,8 +49,6 @@ const VoiceAgentContent: React.FC<{
       <ControlPanel
         onConnect={handleConnect}
         onDisconnect={handleDisconnect}
-        currentView={currentView}
-        onViewChange={handleViewChange}
       />
     </div>
   );
