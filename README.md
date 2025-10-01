@@ -102,7 +102,7 @@ LLM_BASE_URL=https://http.gemma-3-1b-simplismart-proxy.yotta-infrastructure.on-p
 
 ### API Key Setup
 
-The SimpliSmart Voice Agent requires an API key for accessing the AI services. Contact SimpliSmart to obtain the necessary credentials.
+The SimpliSmart Voice Agent requires an API key for accessing the AI services. 
 
 ## Running the Application
 
@@ -162,57 +162,6 @@ voice-agent/
 - `GET /client/`: Web interface (React app)
 - `POST /api/offer`: WebRTC offer endpoint for establishing connections
 
-## Troubleshooting
-
-### Common Issues
-
-**Problem**: "Module not found" errors
-```bash
-# Solution: Ensure all SimpliSmart Voice Agent packages are installed
-pip install -e frontend/
-```
-
-**Problem**: WebRTC connection fails
-- Check that you're using HTTPS or localhost
-- Ensure microphone permissions are granted
-- Verify firewall settings allow the application port
-
-**Problem**: Audio quality issues
-- Check microphone settings and permissions
-- Ensure stable internet connection for API calls
-- Verify API endpoints are accessible
-
-#### API Issues
-
-**Problem**: Authentication errors
-- Verify your API key is correct in the `.env` file
-- Check that the API key has necessary permissions
-- Ensure the API endpoints are accessible from your network
-
-**Problem**: Service timeouts
-- Check internet connectivity
-- Verify service URLs are correct and accessible
-- Consider increasing timeout values if on a slow connection
-
-### Debug Mode
-
-Enable debug logging by setting the log level:
-
-```python
-# Add to app.py for more verbose logging
-import logging
-logging.basicConfig(level=logging.DEBUG)
-```
-
-### Performance Optimization
-
-For better performance:
-
-1. **Use a dedicated GPU** if available for faster AI processing
-2. **Optimize network settings** for lower latency
-3. **Monitor system resources** to ensure adequate CPU and memory
-4. **Use production ASGI server** like uvicorn with multiple workers
-
 ## Development
 
 ### Making Changes
@@ -251,9 +200,8 @@ This project is licensed under the BSD 2-Clause License. See the source code for
 ## Support
 
 For support and questions:
-1. Check the troubleshooting section above
-2. Review the [Pipecat documentation](https://github.com/pipecat-ai/pipecat)
-3. Open an issue in the repository
+1. Review the [Pipecat documentation](https://github.com/pipecat-ai/pipecat)
+2. Open an issue in the repository
 
 ## Acknowledgments
 
