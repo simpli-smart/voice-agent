@@ -1,6 +1,6 @@
-# Voice Agent
+# SimpliSmart Voice Agent
 
-A real-time voice AI assistant built with Pipecat, featuring WebRTC-based audio streaming, speech-to-text, large language model processing, and text-to-speech capabilities.
+A real-time voice AI assistant built by SimpliSmart using Pipecat, featuring WebRTC-based audio streaming, speech-to-text, large language model processing, and text-to-speech capabilities.
 
 ## Features
 
@@ -31,11 +31,11 @@ Audio Input → STT → LLM Context → LLM → TTS → Audio Output
 
 ### Option 1: Automated Installation (Recommended)
 
-The easiest way to install the voice agent is using the provided installation script:
+The easiest way to install the SimpliSmart Voice Agent is using the provided installation script:
 
 ```bash
-# Clone the repository
-git clone <repository-url>
+# Clone the SimpliSmart Voice Agent repository
+git clone https://github.com/simpli-smart/voice-agent.git
 cd voice-agent
 
 # Make the install script executable (macOS/Linux)
@@ -102,7 +102,7 @@ LLM_BASE_URL=https://http.gemma-3-1b-simplismart-proxy.yotta-infrastructure.on-p
 
 ### API Key Setup
 
-The voice agent requires an API key for accessing the AI services. Contact your service provider to obtain the necessary credentials.
+The SimpliSmart Voice Agent requires an API key for accessing the AI services. Contact SimpliSmart to obtain the necessary credentials.
 
 ## Running the Application
 
@@ -130,22 +130,22 @@ uvicorn app:app --host 0.0.0.0 --port 7860 --workers 1
 
 ## Usage
 
-1. **Start the Application**: Run the voice agent using one of the methods above
+1. **Start the Application**: Run the SimpliSmart Voice Agent using one of the methods above
 2. **Open Web Interface**: Navigate to `http://localhost:7860` in your browser
 3. **Grant Permissions**: Allow microphone access when prompted
-4. **Start Conversation**: Click the microphone button to begin voice interaction
+4. **Start Conversation**: Click the microphone button to begin voice interaction with SimpliSmart AI
 5. **Monitor Metrics**: Use the metrics panel to view real-time performance data
 
 ## Project Structure
 
 ```
 voice-agent/
-├── app.py                 # Main FastAPI application
+├── app.py                 # Main SimpliSmart Voice Agent FastAPI application
 ├── requirements.txt       # Python dependencies
 ├── install.sh            # Automated installation script
 ├── README.md             # This file
 ├── .env                  # Environment configuration (create this)
-└── frontend/             # Frontend package
+└── frontend/             # SimpliSmart frontend package
     ├── client/           # React frontend source
     │   ├── src/          # React components and logic
     │   ├── public/       # Static assets
@@ -168,7 +168,7 @@ voice-agent/
 
 **Problem**: "Module not found" errors
 ```bash
-# Solution: Ensure all packages are installed
+# Solution: Ensure all SimpliSmart Voice Agent packages are installed
 pip install -e frontend/
 ```
 
@@ -229,7 +229,7 @@ For better performance:
 ### Testing
 
 ```bash
-# Run the application in test mode
+# Run the SimpliSmart Voice Agent in test mode
 python app.py --host localhost --port 7860
 
 # Test the API endpoints
@@ -257,7 +257,8 @@ For support and questions:
 
 ## Acknowledgments
 
-- Built with [Pipecat](https://github.com/pipecat-ai/pipecat) - Real-time AI voice framework
+- Built by [SimpliSmart](https://github.com/simpli-smart) using [Pipecat](https://github.com/pipecat-ai/pipecat) - Real-time AI voice framework
 - Uses [FastAPI](https://fastapi.tiangolo.com/) for the web server
 - Frontend built with [React](https://reactjs.org/) and [Vite](https://vitejs.dev/)
 - WebRTC implementation for real-time audio streaming
+- Powered by SimpliSmart's AI infrastructure and services
