@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Button } from "@pipecat-ai/voice-ui-kit";
-import { MessageCircleMore, BarChart3 } from 'lucide-react';
+import { BarChart3, MessageCircleMore, Mic } from 'lucide-react';
 import { MetricsDrawer } from '@/components/voice-agent/MetricsDrawer';
 
 interface ViewControlsProps {
@@ -26,7 +26,7 @@ export const ViewControls: React.FC<ViewControlsProps> = ({
                   <div className="flex items-center gap-2">
                     {currentView === 'visualizer' ? (
                       <>
-                        <BarChart3 className="w-4 h-4" />
+                        <Mic className="w-4 h-4" />
                         Voice
                       </>
                     ) : (
@@ -41,7 +41,7 @@ export const ViewControls: React.FC<ViewControlsProps> = ({
               <SelectContent>
                 <SelectItem value="visualizer">
                   <div className="flex items-center gap-2">
-                    <BarChart3 className="w-4 h-4" />
+                    <Mic className="w-4 h-4" />
                     Voice
                   </div>
                 </SelectItem>
