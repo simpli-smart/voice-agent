@@ -1,6 +1,6 @@
-# SimpliSmart Voice Agent
+# Simplismart Voice Agent
 
-A real-time voice AI assistant built by SimpliSmart using Pipecat, featuring WebRTC-based audio streaming, speech-to-text, large language model processing, and text-to-speech capabilities.
+A real-time voice AI assistant built by Simplismart using Pipecat, featuring WebRTC-based audio streaming, speech-to-text, large language model processing, and text-to-speech capabilities.
 
 ## Features
 
@@ -31,10 +31,10 @@ Audio Input → STT → LLM Context → LLM → TTS → Audio Output
 
 ### Option 1: Automated Installation (Recommended)
 
-The easiest way to install the SimpliSmart Voice Agent is using the provided installation script:
+The easiest way to install the Simplismart Voice Agent is using the provided installation script:
 
 ```bash
-# Clone the SimpliSmart Voice Agent repository
+# Clone the Simplismart Voice Agent repository
 git clone https://github.com/simpli-smart/voice-agent.git
 cd voice-agent
 
@@ -96,13 +96,13 @@ API_KEY=your_api_key_here
 
 # Service URLs (optional - defaults provided)
 STT_BASE_URL=https://http.whisper-large-v3-turbo.yotta-infrastructure.on-prem.clusters.s9t.link
-TTS_BASE_URL=https://http.kokoro-tts-simplismart.yotta-infrastructure.on-prem.clusters.s9t.link/v1
-LLM_BASE_URL=https://http.gemma-3-1b-simplismart-proxy.yotta-infrastructure.on-prem.clusters.s9t.link
+TTS_BASE_URL=https://http.kokoro-tts-Simplismart.yotta-infrastructure.on-prem.clusters.s9t.link/v1
+LLM_BASE_URL=https://http.gemma-3-1b-Simplismart-proxy.yotta-infrastructure.on-prem.clusters.s9t.link
 ```
 
 ### API Key Setup
 
-The SimpliSmart Voice Agent requires an API key for accessing the AI services. 
+The Simplismart Voice Agent requires an API key for accessing the AI services. 
 
 ## Running the Application
 
@@ -130,22 +130,22 @@ uvicorn app:app --host 0.0.0.0 --port 7860 --workers 1
 
 ## Usage
 
-1. **Start the Application**: Run the SimpliSmart Voice Agent using one of the methods above
+1. **Start the Application**: Run the Simplismart Voice Agent using one of the methods above
 2. **Open Web Interface**: Navigate to `http://localhost:7860` in your browser
 3. **Grant Permissions**: Allow microphone access when prompted
-4. **Start Conversation**: Click the microphone button to begin voice interaction with SimpliSmart AI
+4. **Start Conversation**: Click the microphone button to begin voice interaction with Simplismart AI
 5. **Monitor Metrics**: Use the metrics panel to view real-time performance data
 
 ## Project Structure
 
 ```
 voice-agent/
-├── app.py                 # Main SimpliSmart Voice Agent FastAPI application
+├── app.py                 # Main Simplismart Voice Agent FastAPI application
 ├── requirements.txt       # Python dependencies
 ├── install.sh            # Automated installation script
 ├── README.md             # This file
 ├── .env                  # Environment configuration (create this)
-└── frontend/             # SimpliSmart frontend package
+└── frontend/             # Simplismart frontend package
     ├── client/           # React frontend source
     │   ├── src/          # React components and logic
     │   ├── public/       # Static assets
@@ -178,7 +178,7 @@ voice-agent/
 ### Testing
 
 ```bash
-# Run the SimpliSmart Voice Agent in test mode
+# Run the Simplismart Voice Agent in test mode
 python app.py --host localhost --port 7860
 
 # Test the API endpoints
@@ -193,9 +193,6 @@ curl http://localhost:7860/
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## License
-
-This project is licensed under the BSD 2-Clause License. See the source code for license details.
 
 ## Support
 
@@ -205,8 +202,8 @@ For support and questions:
 
 ## Acknowledgments
 
-- Built by [SimpliSmart](https://github.com/simpli-smart) using [Pipecat](https://github.com/pipecat-ai/pipecat) - Real-time AI voice framework
+- Built by [Simplismart](https://github.com/simpli-smart) using [Pipecat](https://github.com/pipecat-ai/pipecat) - Real-time AI voice framework
 - Uses [FastAPI](https://fastapi.tiangolo.com/) for the web server
 - Frontend built with [React](https://reactjs.org/) and [Vite](https://vitejs.dev/)
 - WebRTC implementation for real-time audio streaming
-- Powered by SimpliSmart's AI infrastructure and services
+- Powered by Simplismart's AI infrastructure and services
