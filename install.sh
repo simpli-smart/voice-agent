@@ -8,6 +8,13 @@ echo "Voice Agent Installation Script"
 echo "=========================================="
 echo ""
 
+# Create and activate a virtual environment
+echo "🐍 Setting up Python virtual environment..."
+python3 -m venv .venv
+source .venv/bin/activate
+echo "✅ Virtual environment activated"
+echo ""
+
 # Install pipecat with dependencies
 echo "📦 Installing pipecat with dependencies..."
 pip install "git+https://github.com/simpli-smart/pipecat.git@main#egg=pipecat-ai[websockets-base,openai,anthropic]"
