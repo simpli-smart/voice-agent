@@ -15,6 +15,9 @@ source .venv/bin/activate
 echo "✅ Virtual environment activated"
 echo ""
 
+# Copy the .env template
+cp .env-template .env
+
 # Install pipecat with dependencies
 echo "📦 Installing pipecat with dependencies..."
 pip install "git+https://github.com/simpli-smart/pipecat.git@main#egg=pipecat-ai[websockets-base,openai,anthropic]"
