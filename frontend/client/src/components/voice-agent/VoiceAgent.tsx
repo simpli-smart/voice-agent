@@ -69,7 +69,7 @@ export const VoiceAgent: React.FC = () => {
           {({ client, handleConnect, handleDisconnect, error }) => (
             <MetricsProvider client={client}>
               {/* Top Toolbar */}
-              <Toolbar title="Test Voice Agent" />
+              <Toolbar title="AI Agent" />
               
               <VoiceAgentContent
                 client={client}
