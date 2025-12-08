@@ -39,10 +39,10 @@ from pipecat.processors.frameworks.rtvi import RTVIConfig, RTVIObserver, RTVIPro
 load_dotenv(override=True)
 
 # Configuration from environment variables
-STT_BASE_URL = os.getenv("STT_BASE_URL", "https://http.whisper-large-v3-turbo.yotta-infrastructure.on-prem.clusters.s9t.link")
-TTS_BASE_URL = os.getenv("TTS_BASE_URL", "https://http.kokoro-tts-simplismart.yotta-infrastructure.on-prem.clusters.s9t.link/v1") 
-LLM_BASE_URL = os.getenv("LLM_BASE_URL", "https://http.gemma-3-1b-simplismart-proxy.yotta-infrastructure.on-prem.clusters.s9t.link")
-API_KEY = os.getenv("API_KEY", "<add-your-key>")
+TTS_BASE_URL = os.getenv("TTS_BASE_URL")
+STT_BASE_URL = os.getenv("STT_BASE_URL")
+LLM_BASE_URL = os.getenv("LLM_BASE_URL")
+API_KEY = os.getenv("API_KEY")
 
 # Store connections by pc_id
 pcs_map: Dict[str, SmallWebRTCConnection] = {}
@@ -57,11 +57,14 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(lifespan=lifespan)
 
+# List of ICE (Interactive Connectivity Establishment) servers for WebRTC connections.
+# These servers help clients find the best path to connect to each other, even across NATs or firewalls.
+# Here we're using Google's public STUN (Session Traversal Utilities for NAT) server.
 ice_servers = [
     "stun:stun.l.google.com:19302"  # Config for web rtc
 ]
 
-# Mount the frontend at /
+# Mount the frontend at /client
 app.mount("/client", SmallWebRTCPrebuiltUI)  # Modified pipecat ui component
 
 
@@ -79,24 +82,34 @@ async def run_example_english(webrtc_connection: SmallWebRTCConnection):
         ),
     )
 
-    stt = SimplismartSTTService(api_key=API_KEY, base_url=STT_BASE_URL)
+    stt = SimplismartSTTService(api_key=API_KEY, base_url=STT_BASE_URL) # Added support for Simplismart STT in Pipecat 
 
     tts = OpenAITTSService(api_key=API_KEY, model="kokoro", voice="alloy", base_url=TTS_BASE_URL)
 
     llm = OpenAILLMService(model="gemma3_1b", api_key=API_KEY, base_url=LLM_BASE_URL)
 
+    # Initialize and configure MCPClient with MCP SSE server url
+    # mcp = MCPClient(server_params="https://your.mcp.server/sse")
+
+    # Create tools schema from the MCP server and register them with llm
+    # tools = await mcp.register_tools(llm)
+
     messages = [
         {
             "role": "system",
-            "content": "You are a helpful AI Assistant voice bot. Don't use any emojis or special characters",
+            "content": "You are a helpful AI Customer Support Agent named Emilia built by Simplismart to serve the customers. You are to help the customers with their queries and issues. Don't use any emojis or special characters. Keep the responses short and concise.",
         },
     ]
     
     # Handles chat history / context
-    context = OpenAILLMContext(messages)
+    context = OpenAILLMContext(
+        messages, 
+        # tools=tools
+    )
+
     context_aggregator = llm.create_context_aggregator(
         context,
-        user_params=LLMUserAggregatorParams(aggregation_timeout=0.2),)  # Time to wait before llm starts responding
+        user_params=LLMUserAggregatorParams(aggregation_timeout=0.1),)  # Time to wait before llm starts responding
     
     # Pipecat's real time voice protocol
     # It handles the synchronization of user and bot interactions, transcriptions, LLM processing, and text-to-speech delivery.
@@ -108,8 +121,8 @@ async def run_example_english(webrtc_connection: SmallWebRTCConnection):
             rtvi,  # Pipecat's real time voice protocol
             stt,  
             context_aggregator.user(),  # Aggregate chat from user
-            llm,  # LLM
-            tts,  # TTS
+            llm,  
+            tts,
             transport.output(),  # Transport bot output
             context_aggregator.assistant(),  # Aggregrate chat from assistant
         ]
@@ -147,6 +160,7 @@ async def root_redirect():
     return RedirectResponse(url="/client/")
 
 
+# WebRTC Connection handler
 @app.post("/api/offer")
 async def offer(request: dict, background_tasks: BackgroundTasks):
     pc_id = request.get("pc_id")

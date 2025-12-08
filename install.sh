@@ -16,7 +16,7 @@ echo "✅ Virtual environment activated"
 echo ""
 
 # Copy the .env template
-# cp .env-template .env
+cp .env-template .env
 
 # Install pipecat with dependencies
 echo "📦 Installing pipecat with dependencies..."
