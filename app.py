@@ -85,8 +85,8 @@ async def run_example_english(webrtc_connection: SmallWebRTCConnection):
     stt = SimplismartSTTService(api_key=API_KEY, base_url=STT_BASE_URL) # Added support for Simplismart STT in Pipecat 
 
     tts = OpenAITTSService(api_key=API_KEY, model="kokoro", voice="alloy", base_url=TTS_BASE_URL)
-
-    llm = OpenAILLMService(model="gemma3_1b", api_key=API_KEY, base_url=LLM_BASE_URL)
+    
+    llm = OpenAILLMService(model="google/gemma-3-1b-it", api_key=API_KEY, base_url=LLM_BASE_URL)
 
     # Initialize and configure MCPClient with MCP SSE server url
     # mcp = MCPClient(server_params="https://your.mcp.server/sse")
