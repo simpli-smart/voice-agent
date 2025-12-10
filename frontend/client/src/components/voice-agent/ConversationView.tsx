@@ -34,8 +34,24 @@ export const ConversationView: React.FC = memo(() => {
       .filter(Boolean)
       .join(' ');
     
+    // First, handle full phrase/sentence duplication
+    // Check if the text is the same content repeated exactly
+    const words = allText.trim().split(/\s+/);
+    const halfLength = Math.floor(words.length / 2);
+    
+    let deduplicatedText = allText;
+    if (words.length > 1 && words.length % 2 === 0) {
+      const firstHalf = words.slice(0, halfLength).join(' ');
+      const secondHalf = words.slice(halfLength).join(' ');
+      
+      // If both halves are identical, use only one
+      if (firstHalf === secondHalf) {
+        deduplicatedText = firstHalf;
+      }
+    }
+    
     // Clean up repeated words and patterns
-    const cleanedText = allText
+    const cleanedText = deduplicatedText
       // Remove repeated words with no space (like "BBlala" -> "Bla")
       .replace(/\b(\w+)\1+\b/g, '$1')
       // Remove repeated words with space (like "How How" -> "How")
